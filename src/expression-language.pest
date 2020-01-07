@@ -4,14 +4,43 @@
 num = @{ int ~ ("." ~ ASCII_DIGIT*)? ~ (^"e" ~ int)? }
     int = { ("+" | "-")? ~ ASCII_DIGIT+ }
 
-operation = _{ add | subtract | multiply | divide | power }
-    add      = { "+" }
-    subtract = { "-" }
-    multiply = { "*" }
-    divide   = { "/" }
-    power    = { "^" }
+binaryOperator = _{
+    add | subtract | multiply | divide | modulus | pow
+    | bitwiseAnd | bitwiseOr | bitwiseXor
+    | eq | identical | neq | notIdentical
+    | lt | gt | lte | gte | matches
+    | and | or
+    | concat
+    | isIn | notIn
+    | range
+}
 
-expr = { term ~ (operation ~ term)* }
+add          = { "+" }
+subtract     = { "-" }
+multiply     = { "*" }
+divide       = { "/" }
+modulus      = { "%" }
+pow          = { "**" }
+bitwiseAnd   = { "&" }
+bitwiseOr    = { "|" }
+bitwiseXor   = { "^" }
+eq           = { "==" }
+identical    = { "===" }
+neq          = { "!=" }
+notIdentical = { "!==" }
+lt           = { "<" }
+gt           = { ">" }
+lte          = { "<=" }
+gte          = { ">=" }
+matches      = { "matches" }
+and          = { "and" | "&&" }
+or           = { "or" | "||" }
+concat       = { "~" }
+isIn         = { "in" }
+notIn        = { "notIn" }
+range        = { ".." }
+
+expr = { term ~ (binaryOperator ~ term)* }
 term = _{ num | "(" ~ expr ~ ")" }
 
 calculation = _{ SOI ~ expr ~ EOI }

@@ -4,6 +4,12 @@
 num = @{ int ~ ("." ~ ASCII_DIGIT*)? ~ (^"e" ~ int)? }
     int = { ("+" | "-")? ~ ASCII_DIGIT+ }
 
+unaryOperator = _{ not | minus | plus }
+
+not = { "not" | "!" }
+minus = { "-" }
+plus = { "+" }
+
 binaryOperator = _{
     add | subtract | multiply | divide | modulus | pow
     | bitwiseAnd | bitwiseOr | bitwiseXor

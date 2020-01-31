@@ -1,0 +1,12 @@
+{
+    "name": "bar9/expression-language-example",
+    "authors": [
+        {
+            "name": "Roland Brand",
+            "email": "rolandbrand11@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/expression-language": "^5.0"
+    }
+}

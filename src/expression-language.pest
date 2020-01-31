@@ -6,6 +6,7 @@ num = @{ int ~ ("." ~ ASCII_DIGIT*)? ~ (^"e" ~ int)? }
 
 unaryOperator = _{ not | minus | plus }
 
+//TODO: Missing unary operator precedence. "not" comes before point operators, Plus and Minus before pow
 not = { "not" | "!" }
 minus = { "-" }
 plus = { "+" }
@@ -47,7 +48,7 @@ notIn        = { "notIn" }
 range        = { ".." }
 
 expr = { term ~ (binaryOperator ~ term)* }
-term = _{ num | "(" ~ expr ~ ")" }
+term = _{ (unaryOperator)? ~ (num | "(" ~ expr ~ ")") }
 
 calculation = _{ SOI ~ expr ~ EOI }
 

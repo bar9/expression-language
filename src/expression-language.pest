@@ -1,6 +1,7 @@
 // example from the pest intro at https://pest.rs/book/intro.html (calculator)
 // obviously this is not expression language yet, but there is much similarity
 
+//TODO: Remove the unary operators and extend to PHP scalar values (ints, floats, strings, chars?)
 num = @{ int ~ ("." ~ ASCII_DIGIT*)? ~ (^"e" ~ int)? }
     int = { ("+" | "-")? ~ ASCII_DIGIT+ }
 

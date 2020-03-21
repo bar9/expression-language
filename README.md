@@ -9,7 +9,7 @@ You can run the example by executing the following steps (tested for Ubuntu):
 * `git clone https://github.com/bar9/expression-language.git`
 * `cd expression-language && cargo build`
 * `docker run -v $PWD/php:/app composer install`
-* `docker build php/ -t php-ffi`
+* `docker build php -t php-ffi`
 * `docker run -v $PWD:/app php-ffi php /app/php/expressions.php`
 
 Stay tuned, this is still under initial development.

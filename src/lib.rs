@@ -64,6 +64,7 @@ lazy_static! {
     };
 }
 
+/// evaluates an expression (consindering operator precedence)
 fn eval(expression: Pairs<Rule>) -> f64 {
     PREC_CLIMBER.climb(
         expression,
